@@ -1,25 +1,46 @@
 <?php
 /* Challenge: 
-Must output "true" if the given number _n_ is a tall number
-or "false" if _n_ is not a tall number.
-A tall number is a number for which every digit is bigger or
-equal to the digit on its left. 
-Example: 123 is a tall number cause: 3>=2>=1
+
 Note: The left most digit can always be considered to a be a 0 
 
-input: an integer _n_ may have leading zeros 
+input: 1 represent true, 0 is false
+output : printss ones and zeros 
 
+contrainsts: 1 is true 0 is false
+EXAMPLE:
+INPUT      OUTPUT
+0001010    0101010
+0101010
 */
 
-$n = trim(fgets(STDIN)); // $n es una string, como "12340"
-$res = "true";
 
-for ($i = 1; $i < strlen($n); $i++) {
-    if ($n[$i] < $n[$i - 1]) {
-        $res = "false";
-        break;
+// Lee dos cadenas del mismo largo
+$line1 = trim(fgets(STDIN));
+$line2 = trim(fgets(STDIN));
+
+// Recorrer ambos caracteres en paralelo
+for ($i = 0; $i < strlen($line1); $i++) {
+    if ($line1[$i] === '1' || $line2[$i] === '1') {
+        echo '1';
+    } else {
+        echo '0';
     }
 }
 
-echo $res . "\n";
+/**eN PYTHON
+ * for x in zip(input(), input()):
+    print(1 if '1' in x else 0, end='')
+
+lEE Dos cadenas del mismo largo (por ejemplo, "101" y "110").
+Las combina letra por letra con zip, o sea:
+zip("101", "110") → [('1','1'), ('0','1'), ('1','0')]
+
+Para cada par, imprime:
+
+1 si al menos uno de los dos caracteres es '1'.
+0 en otro caso.
+Y todo en una sola línea, sin saltos (end='').
+
+ */
 ?>
+
